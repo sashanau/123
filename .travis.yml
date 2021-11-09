@@ -12,11 +12,11 @@ jobs:
  include:
   - stage: Build_linear
     script:
-     - cmake -B build -DCMAKE_BUILD_TYPE=Release -DCHOOSE_MODE=$MODE
+     - cmake -B build -DCMAKE_BUILD_TYPE=Release -DCHOOSE_MODE=0
      - make -C build
   - stage: Build_parallel
     script:
-     - cmake -B build -DCMAKE_BUILD_TYPE=Release -DCHOOSE_MODE=$MODE
+     - cmake -B build -DCMAKE_BUILD_TYPE=Release -DCHOOSE_MODE=1
      - make -C build
   - stage: Test
     script:
@@ -25,12 +25,12 @@ jobs:
      - cd build && ctest --output-on-failure
   - stage: Sanitaizer_linear
     script:
-     - cmake -B build -DCMAKE_BUILD_TYPE=Release -DCHOOSE_MODE=$MODE -DWITH_SANITIZERS=1
+     - cmake -B build -DCMAKE_BUILD_TYPE=Release -DCHOOSE_MODE=0 -DWITH_SANITIZERS=1
      - make -C build
      - cd build && ctest --output-on-failure
   - stage: Sanitaizer_parallel
     script:
-     - cmake -B build -DCMAKE_BUILD_TYPE=Release -DCHOOSE_MODE=$MODE -DWITH_SANITIZERS=1
+     - cmake -B build -DCMAKE_BUILD_TYPE=Release -DCHOOSE_MODE=1 -DWITH_SANITIZERS=1
      - make -C build
      - cd build && ctest --output-on-failure
   - stage: Coverage
