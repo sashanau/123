@@ -33,10 +33,10 @@ add_subdirectory(lib/matrix_reverse_parallel)
 add_subdirectory(lib/stress_tests)
 
 option(CHOOSE_MODE "Choose mode" OFF) #OFF - linear ON - parallel
-if(CHOOSE_MODE OFF)
+if(CHOOSE_MODE STREQUAL OFF)
     add_executable(main src/main.c)
     target_link_libraries(main matrix matrix_reverse)
-else()
+else(CHOOSE_MODE STREQUAL ON)
     add_executable(main src/main.c)
     target_link_libraries(main matrix matrix_reverse_parallel_copy_interface)
 endif()
