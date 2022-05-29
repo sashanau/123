@@ -1,4 +1,4 @@
-# park-mail-ru-algorithms-graph
+# park-mail-ru-M3
 
 # 2. Количество различных путей
 	Все языки 	Python 3.7.3
